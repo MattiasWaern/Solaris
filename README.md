@@ -1,0 +1,2 @@
+# Solaris
+Sol system "inlämningsuppgift"
