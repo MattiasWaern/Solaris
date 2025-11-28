@@ -1,3 +1,18 @@
+async function getApiKey(){
+    try { 
+        const respone = await fetch ('https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/apikey', {
+            method: 'GET'
+    
+        });
+    }
+    catch (error){
+        console.log('Error fetching API key:', error);
+        showErrorMessage('failed to fetch API key.');
+        return null;
+    }
+}
+
+
 async function getPlanetBodies(){
 try {
     const response = await fetch('https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/bodies', {
