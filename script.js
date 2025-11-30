@@ -1,16 +1,17 @@
 async function getApiKey(){
     try { 
-        const respone = await fetch ('https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/apikey', {
-            method: 'GET'
-    
-        });
+        const respone = await fetch ('https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/apikey');
+            return await response.json();
+        }
+
+         catch (error){
+            console.log('Error fetching API key:', error);
+            showErrorMessage('failed to fetch API key.');
+            return null;
+        }
     }
-    catch (error){
-        console.log('Error fetching API key:', error);
-        showErrorMessage('failed to fetch API key.');
-        return null;
-    }
-}
+   
+
 
 
 async function getPlanetBodies(){
@@ -33,7 +34,7 @@ try {
         catch (error){
         console.log('Error fetching planet bodies:', error);
         showErrorMessage('Failed to fetch planet bodies. Please try again later.');
-        return null;
+        return null;   
     }
 
 }
@@ -46,9 +47,10 @@ document.getElementById("planetButton").addEventListener("click", async () => {
 console.log("KNAPPEN KLICKAD");
     const planets = await getPlanetBodies();
     if (planets) {
-        console.log("Planets fetched:",planets);
+        console.log("Planets fetched:", planets);
     }
 })
 
 
 console.log("JS FILEN KÖRS");
+
