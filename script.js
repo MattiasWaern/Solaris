@@ -48,8 +48,33 @@ console.log("KNAPPEN KLICKAD");
     if (planets) {
         console.log("Planets fetched:",planets);
     }
+
+    else {
+        console.log("No planets data available.")
+    }
+
+    displayPlanets();
 })
 
+
+async function displayPlanets() {
+    const apiKey = 'solaris-NKsTcw3OPrMQPoSz';
+    const planets = await getPlanetBodies(apiKey);
+
+    if (!planets || !planets.bodies) {
+        alert("No planets data found.");
+        return;
+    }
+
+    const container = document.getElementById("planetInfo");
+    container.innerHTML = "";
+
+    planets.bodies.forEach(planet => {
+        const planetInfo = document.createElement("p");
+        planetInfo.innerText = `Name: ${planet.name}, Circumference: ${planet.circumference} km, orbitalPeriod: ${planet.orbitalPeriod}`;
+        container.appendChild(planetInfo);
+    });
+}
 
 console.log("JS FILEN KÖRS");
 
