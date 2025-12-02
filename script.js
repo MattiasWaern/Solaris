@@ -1,3 +1,6 @@
+const planetName = document.getElementById("planet-name")
+const planetInfo = document.getElementById("planet-info")
+
 async function getApiKey(){
     try { 
         const respone = await fetch ('https://corsproxy.io/?https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/apikey', {
@@ -28,7 +31,7 @@ try {
     const data = await response.json();
     console.log(data);
     return data;
-    }      
+    }     
 
         catch (error){
         console.log('Error fetching planet bodies:', error);
@@ -42,21 +45,7 @@ function showErrorMessage(message){
     alert(message);
 }
 
-document.getElementById("planetButton").addEventListener("click", async () => {
-console.log("KNAPPEN KLICKAD");
-    const planets = await getPlanetBodies();
-    if (planets) {
-        console.log("Planets fetched:",planets);
-    }
-
-    else {
-        console.log("No planets data available.")
-    }
-
-    displayPlanets();
-})
-
-
+/*
 async function displayPlanets() {
     const apiKey = 'solaris-NKsTcw3OPrMQPoSz';
     const planets = await getPlanetBodies(apiKey);
@@ -75,6 +64,45 @@ async function displayPlanets() {
         container.appendChild(planetInfo);
     });
 }
+*/
+
+async function displayPlanetInformation(planetId) {
+    const apiKey = 'solaris-NKsTcw3OPrMQPoSz';
+    const planetsData = await getPlanetBodies(apiKey);
+
+    if (!planetsData || !planetsData.bodies) {
+        alert("No planets data found.");
+        return;
+    }
+
+    const planet = planetsData.bodies.find(
+        p => p.name.toLowerCase() === planetId.toLowerCase()
+    );
+
+    if (!planet) {
+        alert("Planet not found.");
+        return;
+    }
+
+    const planetInformation = document.getElementById("planetInformation");
+    planetInformation.innerText = `
+
+        Name: ${planet.name}, 
+        Latin Name: ${planet.latinName},
+        Circumference: ${planet.circumference} km, 
+        Orbital Period: ${planet.orbitalPeriod},
+        Type: ${planet.type}
+    `;
+}
+
+document.querySelectorAll(".planet").forEach(planet => {
+  planet.addEventListener("click", () => {
+    const planetId = planet.dataset.planet;
+    console.log(`You clicked on planet with ID: ${planetId}`)
+    displayPlanetInformation(planetId);
+  });
+
+});
 
 console.log("JS FILEN KÖRS");
 
