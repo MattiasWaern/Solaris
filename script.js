@@ -91,7 +91,12 @@ async function displayPlanetInformation(planetId) {
         Latin Name: ${planet.latinName},
         Circumference: ${planet.circumference} km, 
         Orbital Period: ${planet.orbitalPeriod},
-        Type: ${planet.type}
+        Description: ${planet.desc},
+        Moons: ${planet.moons.length},
+        Type: ${planet.type},
+        Distance from Sun: ${planet.distance} km,
+        Temperature in Day: ${planet.temp.day} C,
+        Temperature in Night: ${planet.temp.night} C
     `;
 }
 
