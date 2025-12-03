@@ -25,8 +25,7 @@ h2{
 .planet:hover{
     cursor: pointer;
     transform: scale(1.05);
-    transition: transform 0.5s;
-    
+    transition: transform 0.5s ease-in-out;
 }
 
 .planet[data-planet="merkurius"] {
@@ -78,6 +77,19 @@ h2{
     position: relative;
 }
 
+.ring{
+    width: 150px;
+    height: 30px;
+    border: 5px solid #f5d4a0;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    left: -20px;
+    transform: rotate(30deg);
+    background: transparent;
+
+}
+
 .planet[data-planet="uranus"] {
     width: 100px;
     height: 100px;
@@ -93,9 +105,3 @@ h2{
     margin: 10px;
     background: radial-gradient(circle at 30% 30%, #55a8db, #1d4f7d);
 }
-
-
-
-
-
-
