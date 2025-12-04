@@ -76,7 +76,7 @@ document.getElementById("planetName").innerText = planet.name;
 document.getElementById("planetLatinName").innerText = planet.latinName;
 
 const planetInformation = document.getElementById("planetInformation");
-planetInformation.innerHTML = `
+    planetInformation.innerHTML = `
         <div class="info-item">
             <div class="label">Omkrets</div>
             <div class="value">${planet.circumference} km</div>
