@@ -2,11 +2,17 @@ const InformationBox = document.getElementById('informationBox');
 
 async function getApiKey(){
     try { 
-        const respone = await fetch ('https://corsproxy.io/?https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/apikey', {
+        const response = await fetch ('https://corsproxy.io/?https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/key', {
             method: 'GET'
     
         });
+
+        const data = await response.json();
+        console.log(data);
+        return data.key;
     }
+
+
     catch (error){
         console.log('Error fetching API key:', error);
         showErrorMessage('failed to fetch API key.');
@@ -16,10 +22,15 @@ async function getApiKey(){
 
 
 async function getPlanetBodies(){
+
+    const apiKey = await getApiKey();
+    if (!apiKey) return null;
+    
+
 try {
-    const response = await fetch('https://corsproxy.io/?https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/bodies', {
+    const response = await fetch('https://corsproxy.io/?https://4a6l0o1px9.execute-api.eu-north-1.amazonaws.com/bodies?errorcode=true', {
         method: 'GET',
-        headers: {'x-zocom': 'solaris-NKsTcw3OPrMQPoSz'}
+        headers: {'x-zocom': apiKey}
         
     });
 
@@ -44,30 +55,8 @@ function showErrorMessage(message){
     alert(message);
 }
 
-/*
-async function displayPlanets() {
-    const apiKey = 'solaris-NKsTcw3OPrMQPoSz';
-    const planets = await getPlanetBodies(apiKey);
-
-    if (!planets || !planets.bodies) {
-        alert("No planets data found.");
-        return;
-    }
-
-    const container = document.getElementById("planetInfo");
-    container.innerHTML = "";
-
-    planets.bodies.forEach(planet => {
-        const planetInfo = document.createElement("p");
-        planetInfo.innerText = `Name: ${planet.name}, Circumference: ${planet.circumference} km, orbitalPeriod: ${planet.orbitalPeriod}`;
-        container.appendChild(planetInfo);
-    });
-}
-*/
-
 async function displayPlanetInformation(planetId) {
-    const apiKey = 'solaris-NKsTcw3OPrMQPoSz';
-    const planetsData = await getPlanetBodies(apiKey);
+    const planetsData = await getPlanetBodies();
 
     if (!planetsData || !planetsData.bodies) {
         alert("No planets data found.");
