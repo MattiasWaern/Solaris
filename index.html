@@ -25,10 +25,13 @@
   <div class="planet" data-planet="neptunus"></div>
 </div>
 
-<div id="informationBox" id="hidden">
-<p id="planetInformation"></p>
-<button id="closeButton" onclick="InformationBox.style.display = 'none'">Stäng</button>
-</div>
+ <div id="overlay">
+        <div id="informationBox">
+            <button id="closeButton">✕</button>
+            <h2 id="planetName"></h2>
+            <h3 id="planetLatinName"></h3>
+            <div id="planetInformation"></div>
+        </div>
 
 
 <script src="script.js"></script>

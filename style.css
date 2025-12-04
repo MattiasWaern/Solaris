@@ -20,16 +20,129 @@ p{
     line-height: 1.6;
 }
 
-#informationBox{
-    justify-content: center;
+/* OVERLAY CSS */
+
+ #overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
     display: none;
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 2px solid gold;
-    border-radius: 10px;
-    background-color: rgba(255, 215, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
+
+#informationBox {
+    width: 90%;
+    max-width: 600px;
+     max-height: 90vh;
+     padding: 0;
+     border-radius: 20px;
+     background: linear-gradient(135deg, rgba(10, 15, 38, 0.95), rgba(31, 42, 88, 0.95));
+     backdrop-filter: blur(15px);
+     box-shadow: 0 0 50px rgba(255, 215, 0, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5);
+     animation: fadeIn 0.3s ease-out;
+     overflow-y: auto;
+     position: relative;
+}
+
+#informationBox::before {
+    content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, gold, transparent);
+        }
+
+        #closeButton {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid gold;
+            color: gold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        #closeButton:hover {
+            background: gold;
+            color: #0a0f26;
+            transform: rotate(90deg);
+        }
+
+        #planetName {
+            margin: 30px 0 5px 0;
+            padding: 0 40px;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: gold;
+            text-align: center;
+        }
+
+        #planetLatinName {
+            margin: 0;
+            padding: 0 40px;
+            text-align: center;
+            color: rgba(255, 215, 0, 0.7);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        #planetInformation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px 20px;
+            padding: 30px 40px 40px 40px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-item .label {
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-item .value {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: white;
+            font-weight: 300;
+        }
+
+        .description {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .description .value {
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+
+/* PLANETERNAS CSS */
 
 
 .planets{
@@ -48,8 +161,8 @@ p{
 }
 
 .planet[data-planet="solen"] {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     margin: 10px;
     background: radial-gradient(circle at 30% 30%, #fff176, #f57f17);
@@ -133,4 +246,11 @@ p{
     border-radius: 50%;
     margin: 10px;
     background: radial-gradient(circle at 30% 30%, #55a8db, #1d4f7d);
+}
+
+
+/* Liten fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
