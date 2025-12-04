@@ -1,4 +1,7 @@
 const InformationBox = document.getElementById('informationBox');
+window.onload = function() {
+    createStars();
+}
 
 async function getApiKey(){
     try { 
@@ -128,6 +131,20 @@ document.getElementById("overlay").addEventListener("click", (e) => {
         document.getElementById("overlay").style.display = "none";
     }
 })
+
+function createStars(){
+    const starContainer = document.getElementById('star');
+    for (let i = 0; i <100; i++){
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDelay = Math.random() * 3 + 's';
+        starContainer.appendChild(star);
+    }
+}
 
 console.log("JS FILEN KÖRS");
 

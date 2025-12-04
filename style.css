@@ -20,6 +20,26 @@ p{
     line-height: 1.6;
 }
 
+.star {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1111;
+}
+
+.star div {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
 /* OVERLAY CSS */
 
 #overlay {
