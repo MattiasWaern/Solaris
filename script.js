@@ -56,57 +56,57 @@ function showErrorMessage(message){
 }
 
 async function displayPlanetInformation(planetId) {
-            const planetsData = await getPlanetBodies();
+    const planetsData = await getPlanetBodies();
 
-            if (!planetsData || !planetsData.bodies) {
-                alert("No planets data found.");
-                return;
-            }
+    if (!planetsData || !planetsData.bodies) {
+        alert("No planets data found.");
+         return;
+     }
 
-            const planet = planetsData.bodies.find(
-                p => p.name.toLowerCase() === planetId.toLowerCase()
-            );
+    const planet = planetsData.bodies.find(
+         p => p.name.toLowerCase() === planetId.toLowerCase()
+    );
 
-            if (!planet) {
-                alert("Planet not found.");
-                return;
-            }
+     if (!planet) {
+       alert("Planet not found.");
+       return;
+     }
 
-            document.getElementById("planetName").innerText = planet.name;
-            document.getElementById("planetLatinName").innerText = planet.latinName;
+document.getElementById("planetName").innerText = planet.name;
+document.getElementById("planetLatinName").innerText = planet.latinName;
 
-            const planetInformation = document.getElementById("planetInformation");
-            planetInformation.innerHTML = `
-                <div class="info-item">
-                    <div class="label">Omkrets</div>
-                    <div class="value">${planet.circumference.toLocaleString('sv-SE')} km</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Avstånd från solen</div>
-                    <div class="value">${planet.distance.toLocaleString('sv-SE')} km</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Omloppstid</div>
-                    <div class="value">${planet.orbitalPeriod.toLocaleString('sv-SE')} dagar</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Temperatur (dag)</div>
-                    <div class="value">${planet.temp.day}°C</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Temperatur (natt)</div>
-                    <div class="value">${planet.temp.night}°C</div>
-                </div>
-                <div class="info-item">
-                    <div class="label">Månar ${planet.moons.length}</div>
-                    <div class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</div>
-                </div>
-                <div class="info-item description">
-                    <div class="label">Beskrivning</div>
-                    <div class="value">${planet.desc}</div>
-                </div>
-            `;
-        }
+const planetInformation = document.getElementById("planetInformation");
+planetInformation.innerHTML = `
+        <div class="info-item">
+            <div class="label">Omkrets</div>
+            <div class="value">${planet.circumference} km</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Avstånd från solen</div>
+            <div class="value">${planet.distance} km</div>
+         </div>
+        <div class="info-item">
+            <div class="label">Omloppstid</div>
+            <div class="value">${planet.orbitalPeriod} dagar</div>
+        </div>
+        <div class="info-item">
+             <div class="label">Temperatur (dag)</div>
+             <div class="value">${planet.temp.day}°C</div>
+         </div>
+        <div class="info-item">
+             <div class="label">Temperatur (natt)</div>
+              <div class="value">${planet.temp.night}°C</div>
+         </div>
+         <div class="info-item">
+               <div class="label">Månar ${planet.moons.length}</div>
+               <div class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</div>
+          </div>
+         <div class="info-item description">
+               <div class="label">Beskrivning</div>
+               <div class="value">${planet.desc}</div>
+         </div>
+     `;
+}
 
 document.querySelectorAll(".planet").forEach(planet => {
   planet.addEventListener("click", () => {
