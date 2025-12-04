@@ -98,7 +98,7 @@ async function displayPlanetInformation(planetId) {
                     <div class="value">${planet.temp.night}°C</div>
                 </div>
                 <div class="info-item">
-                    <div class="label">Månar </div>
+                    <div class="label">Månar ${planet.moons.length}</div>
                     <div class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</div>
                 </div>
                 <div class="info-item description">
