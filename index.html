@@ -8,11 +8,28 @@
 </head>
 <body>
     
-<h1>STOR PLANET</h1>
-<h2>MINDRE PLANET</h2>
-<h3>LITEN PLANET</h3>
+<h1>SOLSYSTEMET</h1>
+<h2>SOLARIS</h2>
 
-<button id="planetButton"></button>
+<div class="planets">
+  <div class="planet" data-planet="solen"></div>
+  <div class="planet" data-planet="merkurius"></div>
+  <div class="planet" data-planet="venus"></div>
+  <div class="planet" data-planet="jorden"></div>
+  <div class="planet" data-planet="mars"></div>
+  <div class="planet" data-planet="jupiter"></div>
+  <div class="planet" data-planet="saturnus">
+  <div class="ring"> </div>
+  </div>
+  <div class="planet" data-planet="uranus"></div>
+  <div class="planet" data-planet="neptunus"></div>
+</div>
+
+<div id="informationBox" id="hidden">
+<p id="planetInformation"></p>
+<button id="closeButton" onclick="InformationBox.style.display = 'none'">Stäng</button>
+</div>
+
 
 <script src="script.js"></script>
 </body>
