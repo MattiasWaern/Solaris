@@ -22,7 +22,7 @@ p{
 
 #informationBox{
     justify-content: center;
-    display: block;
+    display: none;
     width: 80%;
     margin: 20px auto;
     padding: 20px;

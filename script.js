@@ -1,5 +1,4 @@
-const planetName = document.getElementById("planet-name")
-const planetInfo = document.getElementById("planet-info")
+const InformationBox = document.getElementById('informationBox');
 
 async function getApiKey(){
     try { 
@@ -105,6 +104,8 @@ document.querySelectorAll(".planet").forEach(planet => {
     const planetId = planet.dataset.planet;
     console.log(`You clicked on planet with ID: ${planetId}`)
     displayPlanetInformation(planetId);
+
+    InformationBox.style.display = 'block';
   });
 
 });
