@@ -60,32 +60,52 @@ async function displayPlanetInformation(planetId) {
 
     if (!planetsData || !planetsData.bodies) {
         alert("No planets data found.");
-        return;
-    }
+         return;
+     }
 
     const planet = planetsData.bodies.find(
-        p => p.name.toLowerCase() === planetId.toLowerCase()
+         p => p.name.toLowerCase() === planetId.toLowerCase()
     );
 
-    if (!planet) {
-        alert("Planet not found.");
-        return;
-    }
+     if (!planet) {
+       alert("Planet not found.");
+       return;
+     }
 
-    const planetInformation = document.getElementById("planetInformation");
-    planetInformation.innerText = `
+document.getElementById("planetName").innerText = planet.name;
+document.getElementById("planetLatinName").innerText = planet.latinName;
 
-        Name: ${planet.name}, 
-        Latin Name: ${planet.latinName},
-        Circumference: ${planet.circumference} km, 
-        Orbital Period: ${planet.orbitalPeriod},
-        Description: ${planet.desc},
-        Moons: ${planet.moons.length},
-        Type: ${planet.type},
-        Distance from Sun: ${planet.distance} km,
-        Temperature in Day: ${planet.temp.day} C,
-        Temperature in Night: ${planet.temp.night} C
-    `;
+const planetInformation = document.getElementById("planetInformation");
+    planetInformation.innerHTML = `
+        <div class="info-item">
+            <div class="label">Omkrets</div>
+            <div class="value">${planet.circumference} km</div>
+        </div>
+        <div class="info-item">
+            <div class="label">Avstånd från solen</div>
+            <div class="value">${planet.distance} km</div>
+         </div>
+        <div class="info-item">
+            <div class="label">Omloppstid</div>
+            <div class="value">${planet.orbitalPeriod} dagar</div>
+        </div>
+        <div class="info-item">
+             <div class="label">Temperatur (dag)</div>
+             <div class="value">${planet.temp.day}°C</div>
+         </div>
+        <div class="info-item">
+             <div class="label">Temperatur (natt)</div>
+              <div class="value">${planet.temp.night}°C</div>
+         </div>
+         <div class="info-item">
+               <div class="label">Månar ${planet.moons.length}</div>
+               <div class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</div>
+          </div>
+         <div class="info-item description">
+               <div class="label">Beskrivning</div>
+               <div class="value">${planet.desc}</div>
+         </div>
+     `;
 }
 
 document.querySelectorAll(".planet").forEach(planet => {
@@ -94,10 +114,20 @@ document.querySelectorAll(".planet").forEach(planet => {
     console.log(`You clicked on planet with ID: ${planetId}`)
     displayPlanetInformation(planetId);
 
-    InformationBox.style.display = 'block';
+    document.getElementById("overlay").style.display = "flex";
   });
 
 });
+
+document.getElementById("closeButton").addEventListener("click", () => {
+    document.getElementById("overlay").style.display = "none";
+}) 
+
+document.getElementById("overlay").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) {
+        document.getElementById("overlay").style.display = "none";
+    }
+})
 
 console.log("JS FILEN KÖRS");
 
