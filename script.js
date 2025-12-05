@@ -1,7 +1,13 @@
+
+// Hämtar element för informationbox
 const InformationBox = document.getElementById('informationBox');
+
+// Skapar stjärnor i bakgrunden vid inläsning av sidan
 window.onload = function() {
     createStars();
 }
+
+// Hämtar API-nyckel från server
 
 async function getApiKey(){
     try { 
@@ -23,6 +29,7 @@ async function getApiKey(){
     }
 }
 
+// Hämtar planetdata från API
 
 async function getPlanetBodies(){
 
@@ -58,6 +65,8 @@ function showErrorMessage(message){
     alert(message);
 }
 
+// Visar planetinformation i overlay
+
 async function displayPlanetInformation(planetId) {
     const planetsData = await getPlanetBodies();
 
@@ -75,41 +84,45 @@ async function displayPlanetInformation(planetId) {
        return;
      }
 
+// Uppdaterar information i overlay
+
 document.getElementById("planetName").innerText = planet.name;
 document.getElementById("planetLatinName").innerText = planet.latinName;
 
 const planetInformation = document.getElementById("planetInformation");
     planetInformation.innerHTML = `
-        <div class="info-item">
-            <div class="label">Omkrets</div>
-            <div class="value">${planet.circumference} km</div>
-        </div>
-        <div class="info-item">
-            <div class="label">Avstånd från solen</div>
-            <div class="value">${planet.distance} km</div>
-         </div>
-        <div class="info-item">
-            <div class="label">Omloppstid</div>
-            <div class="value">${planet.orbitalPeriod} dagar</div>
-        </div>
-        <div class="info-item">
-             <div class="label">Temperatur (dag)</div>
-             <div class="value">${planet.temp.day}°C</div>
-         </div>
-        <div class="info-item">
-             <div class="label">Temperatur (natt)</div>
-              <div class="value">${planet.temp.night}°C</div>
-         </div>
-         <div class="info-item">
-               <div class="label">Månar ${planet.moons.length}</div>
-               <div class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</div>
-          </div>
-         <div class="info-item description">
-               <div class="label">Beskrivning</div>
-               <div class="value">${planet.desc}</div>
-         </div>
+        <article class="info-item">
+            <section class="label">Omkrets</section>
+            <section class="value">${planet.circumference} km</section>
+        </article>
+        <article class="info-item">
+            <section class="label">Avstånd från solen</section>
+            <section class="value">${planet.distance} km</section>
+         </article>
+        <article class="info-item">
+            <section class="label">Omloppstid</section>
+            <section class="value">${planet.orbitalPeriod} dagar</section>
+        </article>
+        <article class="info-item">
+             <section class="label">Temperatur (dag)</section>
+             <section class="value">${planet.temp.day}°C</section>
+         </article>
+        <article class="info-item">
+             <section class="label">Temperatur (natt)</section>
+              <section class="value">${planet.temp.night}°C</section>
+         </article>
+         <article class="info-item">
+               <section class="label">Månar ${planet.moons.length}</section>
+               <section class="value">${planet.moons.length > 0 ? planet.moons.join(', ') : 'Inga månar'}</section>
+          </article>
+         <article class="info-item description">
+               <section class="label">Beskrivning</section>
+               <section class="value">${planet.desc}</section>
+         </article>
      `;
 }
+
+// Hanterar klick på planeter
 
 document.querySelectorAll(".planet").forEach(planet => {
   planet.addEventListener("click", () => {
@@ -134,6 +147,8 @@ document.getElementById("overlay").addEventListener("click", (e) => {
     }
 })
 
+// Skapar stjärnor i bakgrunden
+
 function createStars(){
     const starContainer = document.getElementById('star');
     for (let i = 0; i <100; i++){
@@ -147,6 +162,3 @@ function createStars(){
         starContainer.appendChild(star);
     }
 }
-
-console.log("JS FILEN KÖRS");
-
