@@ -20,6 +20,8 @@ p{
     line-height: 1.6;
 }
 
+/* STJÄRNORNA + ANIMATION CSS */
+
 .star {
     position: fixed;
     width: 100%;
@@ -40,7 +42,7 @@ p{
     50% { opacity: 1; }
 }
 
-/* OVERLAY CSS */
+/* OVERLAY / INFORMATIONBOX CSS */
 
 #overlay {
     position: fixed;
@@ -187,7 +189,7 @@ p{
     margin: 10px;
     background: radial-gradient(circle at 30% 30%, #fff176, #f57f17);
     box-shadow: 0 0 100px 5px #f57f17;
-    animation: opacityPulse 3s infinite;
+    animation: opacityPulse 3s infinite; /* ÄNDRA ANIMATION PLACEHOLDER GÖR INGENTING JUST NU*/
 }
 
 .planet[data-planet="merkurius"] {
