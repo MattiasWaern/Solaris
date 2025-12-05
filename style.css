@@ -43,7 +43,6 @@ p{
 /* OVERLAY CSS */
 
 #overlay {
-    
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
@@ -178,7 +177,7 @@ p{
 .planet:hover{
     cursor: pointer;
     transform: scale(1.05);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.1s ease-in-out;
 }
 
 .planet[data-planet="solen"] {
@@ -187,8 +186,8 @@ p{
     border-radius: 50%;
     margin: 10px;
     background: radial-gradient(circle at 30% 30%, #fff176, #f57f17);
-    box-shadow: 0 0 10px 5px #f57f17;
-    transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 0 100px 5px #f57f17;
+    animation: opacityPulse 3s infinite;
 }
 
 .planet[data-planet="merkurius"] {

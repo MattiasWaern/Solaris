@@ -122,6 +122,8 @@ document.querySelectorAll(".planet").forEach(planet => {
 
 });
 
+// Stänger overlay
+
 document.getElementById("closeButton").addEventListener("click", () => {
     document.getElementById("overlay").style.display = "none";
 }) 
