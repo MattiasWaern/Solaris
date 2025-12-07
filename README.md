@@ -47,7 +47,12 @@ Alla fel skrivs ut i konsolen för enkel debugging.
 3. Klicka på planeterna och utforska!
 
 ## 📸 Skärmdumpar
+# Homepage
 <img width="1919" height="1079" alt="Solaris_2" src="https://github.com/user-attachments/assets/afd41406-8887-4fc0-b57e-2401dc5f57ec" />
+# Overlay
 <img width="1919" height="1079" alt="solaris3" src="https://github.com/user-attachments/assets/80756945-2bda-4d93-a692-fdc2cc031edd" />
+# Error
+<img width="1919" height="1079" alt="solaris3error" src="https://github.com/user-attachments/assets/c4ff5bbd-8f47-4bdf-a4af-081fdb882ec1" />
+
 
 **Utvecklat som ett skolprojekt för att lära sig API-integration och interaktiv webbutveckling.**
