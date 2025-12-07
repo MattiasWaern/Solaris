@@ -1,7 +1,7 @@
 
 // Hämtar element för informationbox
 const InformationBox = document.getElementById('informationBox');
-
+let clickCount = 0; 
 // Skapar stjärnor i bakgrunden vid inläsning av sidan
 window.onload = function() {
     createStars();
@@ -126,6 +126,16 @@ const planetInformation = document.getElementById("planetInformation");
 
 document.querySelectorAll(".planet").forEach(planet => {
   planet.addEventListener("click", () => {
+
+    clickCount++; 
+
+    // Var 5:e klick visa error och stoppa allt
+    if (clickCount % 5 === 0) {
+        console.log("Simulated error on attempt number: " + clickCount);
+        showErrorMessage("Ett simulerat fel uppstod! Försök igen.");
+        return; // Stoppa innan vi hämtar data
+    }
+
     const planetId = planet.dataset.planet;
     console.log(`You clicked on planet with ID: ${planetId}`)
     displayPlanetInformation(planetId);
@@ -133,6 +143,8 @@ document.querySelectorAll(".planet").forEach(planet => {
     document.getElementById("overlay").style.display = "flex";
   });
 
+
+    console.log(clickCount);
 });
 
 // Stänger overlay
